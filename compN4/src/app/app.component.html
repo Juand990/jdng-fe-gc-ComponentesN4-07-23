@@ -1,0 +1,46 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Lista Tareas</h1>
+      <table>
+        <tr>
+          <td>Titulo</td>
+          <td>Descripcion</td>
+          <td>Borrar</td>
+          <td>Completada?</td>
+        </tr>
+        <tr *ngIf="arrTarrea==''">
+          <td class="vacia" colspan="4">Lista vacia</td>
+        </tr>
+        <tr *ngFor="let item of arrTarrea">
+          <td [ngClass]="{'comp' : item.completada}">{{item.nombre}}</td>
+          <td [ngClass]="{'comp' : item.completada}">{{item.desc}}</td>
+          <td [ngClass]="{'comp' : item.completada}"><button (click)="borrar(item)" type="button">Borrar</button></td>
+          <td [ngClass]="{'comp' : item.completada}"><button [disabled]='item.completada' (click)="estaCompletada(item)"
+              type="button">Completada</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<app-form-tarea [data]="arrTarrea" (plus)="agregarTarea($event)"></app-form-tarea>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<router-outlet></router-outlet>
